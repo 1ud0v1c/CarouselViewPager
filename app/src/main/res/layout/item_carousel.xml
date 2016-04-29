@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fr.ludovic.vimont.carouselviewpager.ScaledFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootItem"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:background="#80FFFFFF"
+            android:textAllCaps="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+</fr.ludovic.vimont.carouselviewpager.ScaledFrameLayout>
