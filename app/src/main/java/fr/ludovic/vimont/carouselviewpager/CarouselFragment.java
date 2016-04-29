@@ -43,6 +43,13 @@ public class CarouselFragment extends Fragment {
 
         final ImageView imageView = (ImageView) root.findViewById(R.id.image);
         imageView.setImageResource(getArguments().getInt("image"));
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CarouselViewPager carousel = (CarouselViewPager) getActivity().findViewById(R.id.carousel);
+                carousel.setCurrentItem(getArguments().getInt("position"), true);
+            }
+        });
 
         final TextView labelView = (TextView) root.findViewById(R.id.label);
         labelView.setText(getArguments().getString("title"));
