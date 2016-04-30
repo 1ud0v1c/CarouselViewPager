@@ -6,7 +6,7 @@ A simple Coverflow widget based on a ViewPager. The provided example use coffee 
 
 ![CarouselViewPager description](https://github.com/1ud0v1c/CarouselViewPager/raw/master/screenshots/carousel_description.png "")
 
-![CarouselViewPager animation](https://github.com/1ud0v1c/CarouselViewPager/raw/master/screenshots/carousel_animation.png "")
+![CarouselViewPager animation](https://github.com/1ud0v1c/CarouselViewPager/raw/master/screenshots/carousel_animation.gif "")
 
 ## Features :
 
