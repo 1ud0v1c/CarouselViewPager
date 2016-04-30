@@ -26,13 +26,13 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Entity> buildData() {
         ArrayList<Entity> entities = new ArrayList<>();
 
-        entities.add(new Entity(R.drawable.americano, "Americano"));
-        entities.add(new Entity(R.drawable.cappucino, "Cappucino"));
-        entities.add(new Entity(R.drawable.latte, "Latte"));
-        entities.add(new Entity(R.drawable.mocha, "Mocha"));
-        entities.add(new Entity(R.drawable.ristretto, "Ristretto"));
-        entities.add(new Entity(R.drawable.short_coffee, "Short Coffee"));
-        entities.add(new Entity(R.drawable.vienna, "Vienna"));
+        entities.add(new Entity(R.drawable.americano, "Americano", getString(R.string.americano)));
+        entities.add(new Entity(R.drawable.cappucino, "Cappucino", getString(R.string.cappucino)));
+        entities.add(new Entity(R.drawable.latte, "Latte", getString(R.string.latte)));
+        entities.add(new Entity(R.drawable.mocha, "Mocha", getString(R.string.mocha)));
+        entities.add(new Entity(R.drawable.ristretto, "Ristretto", getString(R.string.ristretto)));
+        entities.add(new Entity(R.drawable.short_coffee, "Short Coffee", getString(R.string.short_coffee)));
+        entities.add(new Entity(R.drawable.vienna, "Vienna", getString(R.string.vienna)));
 
         return entities;
     }

@@ -75,8 +75,7 @@ public class CarouselAdapter extends FragmentPagerAdapter implements ViewPager.O
     }
 
     @Override
-    public void onPageScrollStateChanged(int state) {
-    }
+    public void onPageScrollStateChanged(int state) { }
 
     private ScaledFrameLayout getRootView(int position) {
         return (ScaledFrameLayout) fragmentManager.findFragmentByTag(this.getFragmentTag(position)).getView().findViewById(R.id.rootItem);
