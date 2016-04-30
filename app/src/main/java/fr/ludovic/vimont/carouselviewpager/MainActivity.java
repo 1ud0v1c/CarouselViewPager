@@ -24,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
         carousel.setScrollDurationFactor(1.5f);
     }
 
+    @Override
+    public void onWindowFocusChanged (boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            carousel.startAnimation(false, null);
+        }
+    }
+
     private ArrayList<Entity> buildData() {
         ArrayList<Entity> entities = new ArrayList<>();
 
