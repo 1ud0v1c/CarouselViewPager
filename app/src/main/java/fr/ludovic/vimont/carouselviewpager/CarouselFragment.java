@@ -35,16 +35,7 @@ public class CarouselFragment extends Fragment {
         final ScaledFrameLayout root = (ScaledFrameLayout) inflater.inflate(R.layout.item_carousel, container, false);
         root.setScaleBoth(getArguments().getFloat("scale"));
         root.setTag("view" + getArguments().getInt("position"));
-        root.post(new Runnable() {
-            @Override
-            public void run() {
-                CarouselViewPager carousel = (CarouselViewPager) getActivity().findViewById(R.id.carousel);
-                int width = root.getWidth();
-                int paddingWidth = (int) (width * 0.2);
-                root.setPadding(paddingWidth, 0, paddingWidth, 0);
-                carousel.setPageMargin(-(paddingWidth - paddingBetweenItem) * 2);
-            }
-        });
+        computePadding(root);
 
         final ImageView imageView = (ImageView) root.findViewById(R.id.image);
         imageView.setImageResource(getArguments().getInt("image"));
@@ -59,31 +50,34 @@ public class CarouselFragment extends Fragment {
         final TextView labelView = (TextView) root.findViewById(R.id.label);
         labelView.setText(getArguments().getString("title"));
 
+        final RelativeLayout descriptionLayout = (RelativeLayout) root.findViewById(R.id.description_layout);
+        final ImageButton backButton = (ImageButton) root.findViewById(R.id.back_button);
+        final TextView descriptionView = (TextView) root.findViewById(R.id.description_view);
+
         final ImageButton infoButton = (ImageButton) root.findViewById(R.id.info_button);
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View infoView) {
-                final RelativeLayout descriptionLayout = (RelativeLayout) root.findViewById(R.id.description_layout);
                 opacityAnimation(descriptionLayout, 0.0f, 1.0f, 750, true, new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
-                        infoView.setVisibility(View.INVISIBLE);
-                        TextView descriptionView = (TextView) root.findViewById(R.id.description_view);
                         descriptionView.setText(getArguments().getString("description"));
+                        backButton.setEnabled(true);
+                        infoView.setVisibility(View.INVISIBLE);
                     }
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        ImageButton backButton = (ImageButton) root.findViewById(R.id.back_button);
                         backButton.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public void onClick(View backView) {
+                            public void onClick(final View backView) {
                                 opacityAnimation(descriptionLayout, 1.0f, 0.0f, 750, true, new Animation.AnimationListener() {
                                     @Override
                                     public void onAnimationStart(Animation animation) {}
 
                                     @Override
                                     public void onAnimationEnd(Animation animation) {
+                                        backView.setEnabled(false);
                                         infoView.setVisibility(View.VISIBLE);
                                     }
 
@@ -101,6 +95,19 @@ public class CarouselFragment extends Fragment {
         });
 
         return root;
+    }
+
+    private void computePadding(final ViewGroup rootLayout) {
+        rootLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                CarouselViewPager carousel = (CarouselViewPager) getActivity().findViewById(R.id.carousel);
+                int width = rootLayout.getWidth();
+                int paddingWidth = (int) (width * 0.2);
+                rootLayout.setPadding(paddingWidth, 0, paddingWidth, 0);
+                carousel.setPageMargin(-(paddingWidth - paddingBetweenItem) * 2);
+            }
+        });
     }
 
     private void opacityAnimation(final View view, float fromAlpha, float toAlpha, int duration, boolean keepResult, Animation.AnimationListener listener){

@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         carousel.addOnPageChangeListener(carouselAdapter);
         carousel.setOffscreenPageLimit(entities.size());
         carousel.setClipToPadding(false);
+        carousel.setScrollDurationFactor(1.5f);
     }
 
     private ArrayList<Entity> buildData() {
