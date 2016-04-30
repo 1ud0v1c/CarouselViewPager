@@ -2,6 +2,7 @@ package fr.ludovic.vimont.carouselviewpager;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.Animation;
 
 import java.util.ArrayList;
 
@@ -13,22 +14,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<Entity> entities = buildData();
-
         carousel = (CarouselViewPager) findViewById(R.id.carousel);
+        ArrayList<Entity> entities = buildData();
         CarouselAdapter carouselAdapter = new CarouselAdapter(this, carousel, getSupportFragmentManager(), entities);
+
         carousel.setAdapter(carouselAdapter);
         carousel.addOnPageChangeListener(carouselAdapter);
         carousel.setOffscreenPageLimit(entities.size());
         carousel.setClipToPadding(false);
+
         carousel.setScrollDurationFactor(1.5f);
+        carousel.setPageWidth(0.55f);
+        carousel.settPaddingBetweenItem(16);
+        carousel.setAlpha(0.0f);
     }
 
     @Override
     public void onWindowFocusChanged (boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
-            carousel.startAnimation(false, null);
+            carousel.startAnimation(false, new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+                    carousel.setAlpha(1.0f);
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) { }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) { }
+            });
         }
     }
 

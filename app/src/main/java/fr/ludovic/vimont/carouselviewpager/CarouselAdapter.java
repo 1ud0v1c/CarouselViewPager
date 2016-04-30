@@ -51,8 +51,6 @@ public class CarouselAdapter extends FragmentPagerAdapter implements ViewPager.O
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        Log.w("onPageScrolled", "position : " + position + ", positionOffset : " + positionOffset + ", positionOffsetPixels : " + positionOffsetPixels);
-
         if (positionOffset >= 0f && positionOffset <= 1f) {
             cur = getRootView(position);
             cur.setScaleBoth(BIG_SCALE - DIFF_SCALE * positionOffset);

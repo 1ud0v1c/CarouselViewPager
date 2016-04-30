@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.Interpolator;
@@ -13,23 +12,22 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class CarouselViewPager extends ViewPager {
-    private int duration = 2250;
-    private boolean animationNotStarted = true;
-
     private Animation animation;
-    private DisplayMetrics metrics;
+    private int animationDuration = 2500;
+    private boolean animationStarted = true;
+
+    private float pageWidth = 0.6f;
+    private int paddingBetweenItem = 8;
     private SpeedScroller mScroller = null;
 
     public CarouselViewPager(Context context) {
         super(context);
         postInitViewPager();
-        metrics = getContext().getResources().getDisplayMetrics();
     }
 
     public CarouselViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         postInitViewPager();
-        metrics = getContext().getResources().getDisplayMetrics();
     }
 
     private void postInitViewPager() {
@@ -63,12 +61,6 @@ public class CarouselViewPager extends ViewPager {
         }
     }
 
-
-
-
-
-
-
     public void setCurrentItemWhitoutScrolling(int item) {
         try {
             Field mCurItem = ViewPager.class.getDeclaredField("mCurItem");
@@ -89,25 +81,45 @@ public class CarouselViewPager extends ViewPager {
         }
     }
 
-    public void startAnimation(boolean endOfQuestion, Animation.AnimationListener listener) {
-        animationNotStarted = false;
-        int chosenX = (metrics.widthPixels+400)*3;
-        animation = (endOfQuestion) ? new ScrollToAnimation(this, endOfQuestion, 0, chosenX, duration) : new ScrollToAnimation(this, endOfQuestion, chosenX * 0.8f, 0, duration);
+    public void startAnimation(boolean arrived, Animation.AnimationListener listener) {
+        animationStarted = false;
+        int desiredPosition = (int) (getChildAt(0).getWidth()/1.5f*(getChildCount()));
+        if(arrived) {
+            animation  = new ScrollToAnimation(this, arrived, 0, desiredPosition, animationDuration);
+        } else {
+            animation = new ScrollToAnimation(this, arrived, desiredPosition, 0, animationDuration);
+        }
         animation.setAnimationListener(listener);
         invalidate();
     }
 
     private Canvas enterAnimation(final Canvas c) {
-        animationNotStarted = true;
+        animationStarted = true;
         startAnimation(animation);
         return c;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (!animationNotStarted) {
+        if (!animationStarted) {
             canvas = enterAnimation(canvas);
         }
         super.onDraw(canvas);
+    }
+
+    public float getPageWidth() {
+        return pageWidth;
+    }
+
+    public void setPageWidth(float pageWidth) {
+        this.pageWidth = pageWidth;
+    }
+
+    public int getPaddingBetweenItem() {
+        return paddingBetweenItem;
+    }
+
+    public void settPaddingBetweenItem(int paddingBetweenItem) {
+        this.paddingBetweenItem = paddingBetweenItem;
     }
 }

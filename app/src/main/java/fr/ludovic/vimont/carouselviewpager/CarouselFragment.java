@@ -14,8 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class CarouselFragment extends Fragment {
-    private int paddingBetweenItem = 8;
-
     public static Fragment newInstance(Context context, Entity entity, int position, float scale) {
         Bundle b = new Bundle();
         b.putInt("image", entity.imageRes);
@@ -103,9 +101,9 @@ public class CarouselFragment extends Fragment {
             public void run() {
                 CarouselViewPager carousel = (CarouselViewPager) getActivity().findViewById(R.id.carousel);
                 int width = rootLayout.getWidth();
-                int paddingWidth = (int) (width * 0.2);
+                int paddingWidth = (int) (width * (1-carousel.getPageWidth())/2);
                 rootLayout.setPadding(paddingWidth, 0, paddingWidth, 0);
-                carousel.setPageMargin(-(paddingWidth - paddingBetweenItem) * 2);
+                carousel.setPageMargin(-(paddingWidth - carousel.getPaddingBetweenItem()) * 2);
             }
         });
     }
