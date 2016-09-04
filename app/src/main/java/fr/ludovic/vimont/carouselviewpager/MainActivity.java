@@ -1,7 +1,7 @@
 package fr.ludovic.vimont.carouselviewpager;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.animation.Animation;
 
 import java.util.ArrayList;

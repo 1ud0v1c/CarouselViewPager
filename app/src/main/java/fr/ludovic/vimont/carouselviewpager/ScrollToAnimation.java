@@ -11,13 +11,13 @@ public class ScrollToAnimation extends Animation {
     private float fromX, toX;
     private long animationStart;
     private CarouselViewPager viewpager;
-    private boolean endOfQuestion;
+    private boolean beginAnimation;
 
-    public ScrollToAnimation(final CarouselViewPager viewpager, boolean endOfQuestion, float fromX, float toX, int duration) {
+    public ScrollToAnimation(final CarouselViewPager viewpager, boolean beginAnimation, float fromX, float toX, int duration) {
         this.viewpager = viewpager;
         this.fromX = fromX;
         this.toX = toX;
-        this.endOfQuestion = endOfQuestion;
+        this.beginAnimation = beginAnimation;
 
         nbChilds = viewpager.getChildCount();
         deltaT = duration / nbChilds;
@@ -31,9 +31,9 @@ public class ScrollToAnimation extends Animation {
     protected void applyTransformation(float interpolatedTime, Transformation t) {
         super.applyTransformation(interpolatedTime, t);
 
-        int offset = (endOfQuestion) ? (int) (-toX * interpolatedTime) : (int) (-fromX * interpolatedTime + fromX);
+        int offset = (beginAnimation) ? (int) (-toX * interpolatedTime) : (int) (-fromX * interpolatedTime + fromX);
 
-        if(!endOfQuestion) {
+        if(!beginAnimation) {
             long animationProgression = Calendar.getInstance().getTimeInMillis() - animationStart;
             currentIndex = (int) (animationProgression/deltaT);
             if(currentIndex != viewpager.getCurrentItem()) {
