@@ -6,6 +6,9 @@ import android.view.animation.Animation;
 
 import java.util.ArrayList;
 
+import fr.ludovic.vimont.carouselviewpager.model.Entity;
+import fr.ludovic.vimont.carouselviewpager.view.CarouselViewPager;
+
 public class MainActivity extends AppCompatActivity {
     private CarouselViewPager carousel;
 
@@ -24,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
         carousel.setClipToPadding(false);
 
         carousel.setScrollDurationFactor(1.5f);
-        carousel.setPageWidth(0.55f);
-        carousel.settPaddingBetweenItem(16);
         carousel.setAlpha(0.0f);
     }
 

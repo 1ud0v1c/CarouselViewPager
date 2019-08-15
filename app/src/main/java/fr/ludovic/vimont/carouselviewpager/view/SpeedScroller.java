@@ -1,4 +1,4 @@
-package fr.ludovic.vimont.carouselviewpager;
+package fr.ludovic.vimont.carouselviewpager.view;
 
 import android.content.Context;
 import android.view.animation.Interpolator;

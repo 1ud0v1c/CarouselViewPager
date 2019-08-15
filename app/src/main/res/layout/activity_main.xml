@@ -18,12 +18,12 @@
             android:layout_height="0dp"
             android:layout_weight="0.2" />
 
-        <fr.ludovic.vimont.carouselviewpager.CarouselViewPager
+        <fr.ludovic.vimont.carouselviewpager.view.CarouselViewPager
             android:id="@+id/carousel"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.6"
             android:layout_gravity="center"
+            android:layout_weight="0.6"
             android:overScrollMode="never" />
 
         <Space

@@ -1,10 +1,12 @@
-package fr.ludovic.vimont.carouselviewpager;
+package fr.ludovic.vimont.carouselviewpager.view;
 
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.Transformation;
 
 import java.util.Calendar;
+
+import fr.ludovic.vimont.carouselviewpager.view.CarouselViewPager;
 
 public class ScrollToAnimation extends Animation {
     private int currentIndex = 0, nbChilds = -1, deltaT = 0;
@@ -37,7 +39,7 @@ public class ScrollToAnimation extends Animation {
             long animationProgression = Calendar.getInstance().getTimeInMillis() - animationStart;
             currentIndex = (int) (animationProgression/deltaT);
             if(currentIndex != viewpager.getCurrentItem()) {
-                viewpager.setCurrentItemWhitoutScrolling(offset);
+                viewpager.setCurrentItemWithoutScrolling(offset);
             }
         }
         viewpager.scrollingToPage(offset);

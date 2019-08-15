@@ -1,4 +1,4 @@
-package fr.ludovic.vimont.carouselviewpager;
+package fr.ludovic.vimont.carouselviewpager.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,12 +12,14 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class CarouselViewPager extends ViewPager {
+    private static final int DEFAULT_PADDING_BETWEEN_ITEM = 16;
+
     private Animation animation;
     private int animationDuration = 2500;
     private boolean animationStarted = true;
 
     private float pageWidth = 0.6f;
-    private int paddingBetweenItem = 8;
+    private int paddingBetweenItem = DEFAULT_PADDING_BETWEEN_ITEM;
     private SpeedScroller mScroller = null;
 
     public CarouselViewPager(Context context) {
@@ -61,7 +63,7 @@ public class CarouselViewPager extends ViewPager {
         }
     }
 
-    public void setCurrentItemWhitoutScrolling(int item) {
+    public void setCurrentItemWithoutScrolling(int item) {
         try {
             Field mCurItem = ViewPager.class.getDeclaredField("mCurItem");
             mCurItem.setAccessible(true);
@@ -71,7 +73,7 @@ public class CarouselViewPager extends ViewPager {
         }
     }
 
-    public void scrollingToPage(int offset)  {
+    public void scrollingToPage(int offset) {
         try {
             Method pageScrolled = ViewPager.class.getDeclaredMethod("pageScrolled", int.class);
             pageScrolled.setAccessible(true);
@@ -83,9 +85,9 @@ public class CarouselViewPager extends ViewPager {
 
     public void startAnimation(boolean arrived, Animation.AnimationListener listener) {
         animationStarted = false;
-        int desiredPosition = (int) (getChildAt(0).getWidth()/1.5f*(getChildCount()));
-        if(arrived) {
-            animation  = new ScrollToAnimation(this, arrived, 0, desiredPosition, animationDuration);
+        int desiredPosition = (int) (getChildAt(0).getWidth() / 1.5f * (getChildCount()));
+        if (arrived) {
+            animation = new ScrollToAnimation(this, arrived, 0, desiredPosition, animationDuration);
         } else {
             animation = new ScrollToAnimation(this, arrived, desiredPosition, 0, animationDuration);
         }
@@ -119,7 +121,7 @@ public class CarouselViewPager extends ViewPager {
         return paddingBetweenItem;
     }
 
-    public void settPaddingBetweenItem(int paddingBetweenItem) {
+    public void setPaddingBetweenItem(int paddingBetweenItem) {
         this.paddingBetweenItem = paddingBetweenItem;
     }
 }
