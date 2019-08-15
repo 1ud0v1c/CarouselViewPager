@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        carousel = (CarouselViewPager) findViewById(R.id.carousel);
+        carousel = findViewById(R.id.carousel);
         ArrayList<Entity> entities = buildData();
         CarouselAdapter carouselAdapter = new CarouselAdapter(this, carousel, getSupportFragmentManager(), entities);
 
