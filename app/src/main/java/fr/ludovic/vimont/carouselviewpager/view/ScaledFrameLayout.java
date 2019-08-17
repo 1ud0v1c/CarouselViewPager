@@ -24,6 +24,6 @@ public class ScaledFrameLayout extends FrameLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.scale(scale, scale, getWidth() / 2, getHeight() / 2);
+        canvas.scale(scale, scale, getWidth() / 2.0f, getHeight() / 2.0f);
     }
 }

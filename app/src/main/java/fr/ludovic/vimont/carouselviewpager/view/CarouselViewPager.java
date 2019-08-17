@@ -13,9 +13,10 @@ import java.lang.reflect.Method;
 
 public class CarouselViewPager extends ViewPager {
     private static final int DEFAULT_PADDING_BETWEEN_ITEM = 16;
+    private static final int DEFAULT_ANIMATION_DURATION = 2500;
 
     private Animation animation;
-    private int animationDuration = 2500;
+    private int animationDurationInMs = DEFAULT_ANIMATION_DURATION;
     private boolean animationStarted = true;
 
     private float pageWidth = 0.6f;
@@ -87,9 +88,9 @@ public class CarouselViewPager extends ViewPager {
         animationStarted = false;
         int desiredPosition = (int) (getChildAt(0).getWidth() / 1.5f * (getChildCount()));
         if (arrived) {
-            animation = new ScrollToAnimation(this, arrived, 0, desiredPosition, animationDuration);
+            animation = new ScrollToAnimation(this, arrived, 0, desiredPosition, animationDurationInMs);
         } else {
-            animation = new ScrollToAnimation(this, arrived, desiredPosition, 0, animationDuration);
+            animation = new ScrollToAnimation(this, arrived, desiredPosition, 0, animationDurationInMs);
         }
         animation.setAnimationListener(listener);
         invalidate();

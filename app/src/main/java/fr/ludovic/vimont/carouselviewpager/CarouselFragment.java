@@ -116,8 +116,8 @@ public class CarouselFragment extends Fragment {
                     CarouselViewPager carousel = getActivity().findViewById(R.id.carousel);
                     int width = rootLayout.getWidth();
                     int paddingWidth = Math.round(width * (1 - carousel.getPageWidth()) / 2);
-                    int paddingSmallScaleWith = Math.round(paddingWidth * CarouselAdapter.getSmallScale());
-                    rootLayout.setPadding(paddingSmallScaleWith, 0, paddingSmallScaleWith, 0);
+                    int paddingSmallScaleWidth = Math.round(paddingWidth * CarouselAdapter.getSmallScale());
+                    rootLayout.setPadding(paddingSmallScaleWidth, 0, paddingSmallScaleWidth, 0);
                     int marginInPixels = Math.round(-(paddingWidth - carousel.getPaddingBetweenItem()) * 2);
                     carousel.setPageMargin(marginInPixels);
                 }

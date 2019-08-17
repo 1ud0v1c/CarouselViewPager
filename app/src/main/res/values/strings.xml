@@ -1,11 +1,24 @@
 <resources>
     <string name="app_name">CarouselViewPager</string>
 
-    <string name="americano">A long black is based on a 30ml shot of espresso. Hot water is then added to this and served black. The term \'long\' here refers to the fact that the volume has been increased by adding hot water.</string>
-    <string name="cappucino">Cappucino can be recognised often by the quantity of foam served on top of the drink. When the milk is being stretched (steamed) the barista will incorporate a greater amount of air into the milk, this in turn creates a greater quantity of foam.</string>
-    <string name="latte">The general rule of thumb with these is that they will be served with espresso, steamed milk and around 1cm of milk froth will settle on top. A skilled barista that can generate micro foam when stretching the milk will often present your drink with some artistic latte art on top.</string>
-    <string name="mocha">A delicious combination of rich chocolate flavour and bold coffee. The best Mocha\'s will use a dark drinking chocolate mixed with perfectly brewed espresso, gently stirred to combine then served with Latte style steamed milk. For extra indulgence serve topped with whipped cream.</string>
-    <string name="ristretto">Similar to a short black, the difference however is that rather than allowing water to pass through the coffee grounds until you have 30mls of espresso, the extraction would be stopped when you have half that amount. The purpose behind this is to add more acidity and caffeine.</string>
-    <string name="short_coffee">A short black is a 30ml shot of espresso served in a demitasse cup, and a good/fresh short black will have a thick golden crema on top. This is of course the basis for almost all espresso coffees.</string>
-    <string name="vienna">A vienna is simply a long black served with whipped cream as a replacement for milk and sugar.</string>
+    <string name="americano_title">Americano</string>
+    <string name="americano_description">A long black is based on a 30ml shot of espresso. Hot water is then added to this and served black. The term \'long\' here refers to the fact that the volume has been increased by adding hot water.</string>
+
+    <string name="cappucino_title">Cappucino</string>
+    <string name="cappucino_description">Cappucino can be recognised often by the quantity of foam served on top of the drink. When the milk is being stretched (steamed) the barista will incorporate a greater amount of air into the milk, this in turn creates a greater quantity of foam.</string>
+
+    <string name="latte_title">Latte</string>
+    <string name="latte_description">The general rule of thumb with these is that they will be served with espresso, steamed milk and around 1cm of milk froth will settle on top. A skilled barista that can generate micro foam when stretching the milk will often present your drink with some artistic latte art on top.</string>
+
+    <string name="mocha_title">Mocha</string>
+    <string name="mocha_description">A delicious combination of rich chocolate flavour and bold coffee. The best Mocha\'s will use a dark drinking chocolate mixed with perfectly brewed espresso, gently stirred to combine then served with Latte style steamed milk. For extra indulgence serve topped with whipped cream.</string>
+
+    <string name="ristretto_title">Ristretto</string>
+    <string name="ristretto_description">Similar to a short black, the difference however is that rather than allowing water to pass through the coffee grounds until you have 30mls of espresso, the extraction would be stopped when you have half that amount. The purpose behind this is to add more acidity and caffeine.</string>
+
+    <string name="short_coffee_title">Short Coffee</string>
+    <string name="short_coffee_description">A short black is a 30ml shot of espresso served in a demitasse cup, and a good/fresh short black will have a thick golden crema on top. This is of course the basis for almost all espresso coffees.</string>
+
+    <string name="vienna_title">Vienna</string>
+    <string name="vienna_description">A vienna is simply a long black served with whipped cream as a replacement for milk and sugar.</string>
 </resources>

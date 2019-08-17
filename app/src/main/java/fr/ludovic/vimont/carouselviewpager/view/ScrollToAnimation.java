@@ -6,14 +6,15 @@ import android.view.animation.Transformation;
 
 import java.util.Calendar;
 
-import fr.ludovic.vimont.carouselviewpager.view.CarouselViewPager;
-
 public class ScrollToAnimation extends Animation {
-    private int currentIndex = 0, nbChilds = -1, deltaT = 0;
+    private boolean beginAnimation;
+    private int currentIndex = 0;
+    private int deltaT = 0;
+    private int numberOfChild = -1;
     private float fromX, toX;
     private long animationStart;
+
     private CarouselViewPager viewpager;
-    private boolean beginAnimation;
 
     public ScrollToAnimation(final CarouselViewPager viewpager, boolean beginAnimation, float fromX, float toX, int duration) {
         this.viewpager = viewpager;
@@ -21,8 +22,8 @@ public class ScrollToAnimation extends Animation {
         this.toX = toX;
         this.beginAnimation = beginAnimation;
 
-        nbChilds = viewpager.getChildCount();
-        deltaT = duration / nbChilds;
+        numberOfChild = viewpager.getChildCount();
+        deltaT = duration / numberOfChild;
 
         setDuration(duration);
         animationStart = Calendar.getInstance().getTimeInMillis();

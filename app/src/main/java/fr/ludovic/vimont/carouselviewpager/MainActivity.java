@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onWindowFocusChanged (boolean hasFocus) {
+    public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
             carousel.startAnimation(false, new Animation.AnimationListener() {
@@ -41,25 +41,25 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onAnimationEnd(Animation animation) { }
+                public void onAnimationEnd(Animation animation) {
+                }
 
                 @Override
-                public void onAnimationRepeat(Animation animation) { }
+                public void onAnimationRepeat(Animation animation) {
+                }
             });
         }
     }
 
     private ArrayList<Entity> buildData() {
         ArrayList<Entity> entities = new ArrayList<>();
-
-        entities.add(new Entity(R.drawable.americano, "Americano", getString(R.string.americano)));
-        entities.add(new Entity(R.drawable.cappucino, "Cappucino", getString(R.string.cappucino)));
-        entities.add(new Entity(R.drawable.latte, "Latte", getString(R.string.latte)));
-        entities.add(new Entity(R.drawable.mocha, "Mocha", getString(R.string.mocha)));
-        entities.add(new Entity(R.drawable.ristretto, "Ristretto", getString(R.string.ristretto)));
-        entities.add(new Entity(R.drawable.short_coffee, "Short Coffee", getString(R.string.short_coffee)));
-        entities.add(new Entity(R.drawable.vienna, "Vienna", getString(R.string.vienna)));
-
+        entities.add(new Entity(R.drawable.americano, getString(R.string.americano_title), getString(R.string.americano_description)));
+        entities.add(new Entity(R.drawable.cappucino, getString(R.string.cappucino_title), getString(R.string.cappucino_description)));
+        entities.add(new Entity(R.drawable.latte, getString(R.string.latte_title), getString(R.string.latte_description)));
+        entities.add(new Entity(R.drawable.mocha, getString(R.string.mocha_title), getString(R.string.mocha_description)));
+        entities.add(new Entity(R.drawable.ristretto, getString(R.string.ristretto_title), getString(R.string.ristretto_description)));
+        entities.add(new Entity(R.drawable.short_coffee, getString(R.string.short_coffee_title), getString(R.string.short_coffee_description)));
+        entities.add(new Entity(R.drawable.vienna, getString(R.string.vienna_title), getString(R.string.vienna_description)));
         return entities;
     }
 }
