@@ -10,34 +10,37 @@ import fr.ludovic.vimont.carouselviewpager.model.Entity;
 import fr.ludovic.vimont.carouselviewpager.view.CarouselViewPager;
 
 public class MainActivity extends AppCompatActivity {
-    private CarouselViewPager carousel;
+    private CarouselViewPager carouselViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        carousel = findViewById(R.id.carousel);
+        carouselViewPager = findViewById(R.id.carousel);
         ArrayList<Entity> entities = buildData();
-        CarouselAdapter carouselAdapter = new CarouselAdapter(this, carousel, getSupportFragmentManager(), entities);
+        final CarouselAdapter carouselAdapter = new CarouselAdapter(this, carouselViewPager, getSupportFragmentManager(), entities);
 
-        carousel.setAdapter(carouselAdapter);
-        carousel.addOnPageChangeListener(carouselAdapter);
-        carousel.setOffscreenPageLimit(entities.size());
-        carousel.setClipToPadding(false);
+        carouselViewPager.setAdapter(carouselAdapter);
+        carouselViewPager.addOnPageChangeListener(carouselAdapter);
+        carouselViewPager.setOffscreenPageLimit(entities.size());
+        carouselViewPager.setClipToPadding(false);
 
-        carousel.setScrollDurationFactor(1.5f);
-        carousel.setAlpha(0.0f);
+        carouselViewPager.setScrollDurationFactor(1.5f);
+        // Used for the animation we hide the ViewPager until the animation start
+        carouselViewPager.setAlpha(0.0f);
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
-            carousel.startAnimation(false, new Animation.AnimationListener() {
+            // As soon as, we have the focus we launch the animation
+            carouselViewPager.startAnimation(false, new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
-                    carousel.setAlpha(1.0f);
+                    // And we display the widget to see it
+                    carouselViewPager.setAlpha(1.0f);
                 }
 
                 @Override
